@@ -22,24 +22,60 @@ export function configHtmlPlugin(env: ViteEnv, isBuild: boolean, isQiankunMicro:
 
   const htmlPlugin: PluginOption[] = createHtmlPlugin({
     minify: isBuild,
-    inject: {
-      // 修改模板html的标题
-      data: {
-        title: VITE_GLOB_APP_TITLE,
-        basePublicPath: basePublicPath,
+    // inject: {
+    //   // 修改模板html的标题
+    //   data: {
+    //     title: VITE_GLOB_APP_TITLE,
+    //     basePublicPath: basePublicPath,
+    //   },
+    //   // 将app.config.js文件注入到模板html中
+    //   tags: isBuild
+    //     ? [
+    //         {
+    //           tag: 'script',
+    //           attrs: {
+    //             src: getAppConfigSrc(),
+    //           },
+    //         },
+    //       ]
+    //     : [],
+    // },
+    pages: [
+      {
+        entry: `src/main.ts`,
+        template: `index.html`,
+        filename: 'index.html',
+        injectOptions: {
+          // 修改模板html的标题
+          data: {
+            title: VITE_GLOB_APP_TITLE,
+            basePublicPath: basePublicPath,
+          },
+          // 将app.config.js文件注入到模板html中
+          tags: isBuild
+            ? [
+                {
+                  tag: 'script',
+                  attrs: {
+                    src: getAppConfigSrc(),
+                  },
+                },
+              ]
+            : [],
+        },
       },
-      // 将app.config.js文件注入到模板html中
-      tags: isBuild
-        ? [
-            {
-              tag: 'script',
-              attrs: {
-                src: getAppConfigSrc(),
-              },
-            },
-          ]
-        : [],
-    },
+      {
+        entry: `src/multiPage/home/main.ts`,
+        template: `home.html`,
+        filename: 'home.html',
+        injectOptions: {
+          // 向ejs模板中注入数据
+          data: {
+            title: 'home',
+          },
+        },
+      },
+    ],
   });
   return htmlPlugin;
 }
