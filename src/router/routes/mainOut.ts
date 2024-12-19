@@ -17,6 +17,26 @@ export const mainOutRoutes: AppRouteModule[] = [
       ignoreAuth: true,
     },
   },
+  {
+    path: '/website',
+    name: 'Website',
+    component: () => import('/@/views/website/index.vue'),
+    meta: {
+      title: 'Website',
+      ignoreAuth: true,
+    },
+    children: [
+      {
+        path: '/website/about',
+        name: 'About',
+        component: () => import('/@/views/website/about.vue'),
+        meta: {
+          title: 'Website',
+          ignoreAuth: true,
+        },
+      },
+    ],
+  },
 ];
 
 export const mainOutRouteNames = mainOutRoutes.map((item) => item.name);
