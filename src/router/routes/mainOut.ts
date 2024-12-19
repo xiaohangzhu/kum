@@ -21,6 +21,7 @@ export const mainOutRoutes: AppRouteModule[] = [
     path: '/website',
     name: 'Website',
     component: () => import('/@/views/website/index.vue'),
+    redirect: '/website/about',
     meta: {
       title: 'Website',
       ignoreAuth: true,
@@ -30,6 +31,33 @@ export const mainOutRoutes: AppRouteModule[] = [
         path: '/website/about',
         name: 'About',
         component: () => import('/@/views/website/about.vue'),
+        meta: {
+          title: 'Website',
+          ignoreAuth: true,
+        },
+      },
+      {
+        path: '/website/business',
+        name: 'business',
+        component: () => import('/@/views/website/business.vue'),
+        meta: {
+          title: 'Website',
+          ignoreAuth: true,
+        },
+      },
+      {
+        path: '/website/team',
+        name: 'team',
+        component: () => import('/@/views/website/team.vue'),
+        meta: {
+          title: 'Website',
+          ignoreAuth: true,
+        },
+      },
+      {
+        path: '/website/connect',
+        name: 'connect',
+        component: () => import('/@/views/website/connect.vue'),
         meta: {
           title: 'Website',
           ignoreAuth: true,

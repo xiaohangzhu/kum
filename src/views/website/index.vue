@@ -2,42 +2,160 @@
   <div class="website">
     <!-- web {{ t('okText') }} -->
     <header class="website__header">
+      <img :src="logo" alt="logo" />
 
+      <div class="header_right">
+        <ul class="menu">
+          <li class="menu__item" 
+          :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1')"></li>
+          <li class="menu__item" 
+          :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')">我們的<br>業務</li>
+          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')">我們的<br>團隊</li>
+          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')">聯絡<br>我們</li>
+        </ul>
+        <div class="locale">
+          <span class="locale__title">VIP 客户管理系统</span>
+          <span :class="['locale__item', currentLocale === 'en' && 'active']" @click="toggleLocale('en')">En</span>
+          <span class="locale__item">/</span>
+          <span :class="['locale__item', currentLocale === 'zh_CN' && 'active']" @click="toggleLocale('zh_CN')">简</span>
+        </div>
+      </div>
     </header>
     <RouterView />
+    <footer class="website__footer">
+      <img :src="logo" alt="logo" />
+      <span>© 2024 KUM INTERNATIONAL GROUP LTD. ALL RIGHTS RESERVED.</span>
+    </footer>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { useI18n } from '/@/hooks/web/useI18n';
-  const { t } = useI18n();
+import { useI18n } from '/@/hooks/web/useI18n';
+import { useLocale } from '/@/locales/useLocale';
+
+const { changeLocale, getLocale } = useLocale();
+
+import logo from '/@/assets/images/website/logo.png';
+import { ref, unref, watchEffect } from 'vue';
+
+const currentMenu = ref("about") 
+const currentLocale = ref("")
+const { t } = useI18n();
+
+watchEffect(() => {
+  currentLocale.value = unref(getLocale)
+  });
+
+const toggleMenu = (str) => {
+  currentMenu.value = str
+}
+const toggleLocale = async str => {
+  currentLocale.value = str
+
+  await changeLocale(str);
+
+  location.reload();
+
+  console.log(unref(getLocale))
+}
 </script>
 <style lang="less" scoped>
-  .website {
+.website {
+  width: 100%;
+  min-height: 100%;
+  background: url(/@/assets/images/website/shouye_bg.jpg) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  box-sizing: border-box;
+
+  .website__header {
+    background: url(/@/assets/images/website/daohang_1.png) no-repeat left top;
+    background-size: 100% 100%;
+    height: 89px;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
-    min-height: 100%;
-    border: 1px solid red;
-    background: url(/@/assets/images/website/shouye_bg.jpg) no-repeat center center;
-    background-size: cover;
-    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
 
 
-    .website__header {
-      background: url(/@/assets/images/website/daohang_1.png)  no-repeat left top;
-      background-size: 100% 100%;
-      height: 89px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-
+    .header_right {
+      line-height: 1;
+      font-size: 18px;
+      color: #ffffff;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      height: 100%;
+      .menu {
+        display: flex;
+        height: 100%;
+        margin-bottom: 0;
+        .menu__item {
+          width: 104px;
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          text-align: center;
+          line-height: 1.2;
+          &.active {
+            background: #711711;
+          }
+        }
+      }
+      .locale {
+        padding-left: 72px;
+        .locale__title {
+          color: #95352f;
+          border-right: 1px solid #95352f;
+          padding-right: 15px;
+          margin-right: 15px;
+          height: 26px;
+        }
+        .locale__item {
+          width: 26px;
+          height: 26px;
+          display: inline-block;
+          text-align: center;
+          line-height: 26px;
+          cursor: pointer;
+          &.active {
+            background: #95352f;
+          }
+        }
+      }
     }
-
   }
 
-  @media (max-width: @screen-md) {
-    .website {
-      // background: #ccc;
-    }
+  .website__footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 173px;
+    background: url(/@/assets/images/website/daohang_2.png) no-repeat left top;
+    background-size: 100% 100%;
+    font-weight: 400;
+    font-size: 12px;
+    color: #ffffff;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+
   }
+}
+
+@media (max-width: @screen-md) {
+  .website {
+    // background: #ccc;
+  }
+}
 </style>
