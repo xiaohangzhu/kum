@@ -1,10 +1,14 @@
 <template>
   <div class="team">
-    <div class="team__header"> </div>
+    <div class="website__banner team__header"> 
+      <div class="website__banner_main"><h3>我们的团队</h3> <span>OUR TEAM</span></div>
+    </div>
 
     <div class="team__content">
       <div class="team__content_user">
-        <div class="user__img"></div>
+        <div class="user__img">
+          <img src="https://lioner.com/wp-content/uploads/2021/09/Picture1-e1631452483365.jpg" alt="">
+        </div>
         <div class="user__info">
           <div class="user__info_title"><span>David</span><span>陳大偉</span><span>创始管理合伙人</span></div>
           <div class="user__info_content">
@@ -22,13 +26,13 @@
     min-height: 100vh;
     background: #fff;
     .team__header {
-      height: 605px;
       background: url(/@/assets/images/website/banner_7.png) no-repeat center center;
-      background-size: cover;
     }
-    // .team__content {
-    //   background: #fff;
-    // }
+    .team__content {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 88px 0 50px;
+    }
     .team__content_user {
       display: flex;
       flex-flow: row nowrap;
@@ -38,6 +42,13 @@
         height: 260px;
         background: url(/@/assets/images/website/touxiang.png) no-repeat center center;
         background-size: 100% 100%;
+        margin-right: 60px;
+        img {
+          width: 215px;
+          height: 242px;
+          margin-left: 17px;
+          object-fit: cover;
+        }
       }
       .user__info_title {
         position: relative;

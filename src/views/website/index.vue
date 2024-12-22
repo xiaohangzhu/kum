@@ -2,16 +2,14 @@
   <div class="website">
     <!-- web {{ t('okText') }} -->
     <header class="website__header">
-      <img :src="logo" alt="logo" />
+      <img :src="logo" alt="logo" class="logo" @click="goHome" />
 
       <div class="header_right">
         <ul class="menu">
-          <li class="menu__item" 
-          :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1')"></li>
-          <li class="menu__item" 
-          :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')">我們的<br>業務</li>
-          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')">我們的<br>團隊</li>
-          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')">聯絡<br>我們</li>
+          <li class="menu__item" :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1')"></li>
+          <li class="menu__item" :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')">我們的<br />業務</li>
+          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')">我們的<br />團隊</li>
+          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')">聯絡<br />我們</li>
         </ul>
         <div class="locale">
           <span class="locale__title">VIP 客户管理系统</span>
@@ -32,39 +30,76 @@
 <script lang="ts" setup>
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useLocale } from '/@/locales/useLocale';
+import { router } from '/@/router';
 
 const { changeLocale, getLocale } = useLocale();
 
 import logo from '/@/assets/images/website/logo.png';
 import { ref, unref, watchEffect } from 'vue';
 
-const currentMenu = ref("about") 
-const currentLocale = ref("")
+const currentMenu = ref('home');
+const currentLocale = ref('');
 const { t } = useI18n();
 
 watchEffect(() => {
-  currentLocale.value = unref(getLocale)
-  });
+  currentLocale.value = unref(getLocale);
+});
 
 const toggleMenu = (str) => {
-  currentMenu.value = str
-}
-const toggleLocale = async str => {
-  currentLocale.value = str
+  currentMenu.value = str;
+  router.push({
+    name: str,
+  });
+};
+const toggleLocale = async (str) => {
+  currentLocale.value = str;
 
   await changeLocale(str);
 
   location.reload();
 
-  console.log(unref(getLocale))
-}
+  console.log(unref(getLocale));
+};
+const goHome = () => {
+  router.push({
+    name: 'home',
+  });
+};
 </script>
+<style lang="less">
+.website__banner {
+  background-size: cover;
+  height: 605px;
+  position: relative;
+  .website__banner_main {
+    position: absolute;
+    width: 517px;
+    text-align: center;
+    top: 275px;
+    left: 50%;
+    transform: translateX(-50%);
+    --color--: #000;
+    @color: var(--color--, #000);
+    > h3 {
+      font-weight: bold;
+      font-size: 54px;
+      color: @color;
+      border-bottom: 1px solid @color;
+      margin-bottom: 26px;
+      padding-bottom: 22px;
+    }
+    > span {
+      font-weight: bold;
+      font-size: 24px;
+      color: @color;
+    }
+  }
+}
+</style>
 <style lang="less" scoped>
 .website {
   width: 100%;
   min-height: 100%;
-  background: url(/@/assets/images/website/shouye_bg.jpg) no-repeat center center;
-  background-size: cover;
   position: relative;
   box-sizing: border-box;
 
@@ -81,7 +116,10 @@ const toggleLocale = async str => {
     align-items: center;
     justify-content: space-between;
     padding: 0 100px;
-
+    z-index: 11;
+    .logo {
+      cursor: pointer;
+    }
 
     .header_right {
       line-height: 1;
@@ -134,9 +172,9 @@ const toggleLocale = async str => {
   }
 
   .website__footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    // position: absolute;
+    // left: 0;
+    // bottom: 0;
     width: 100%;
     height: 173px;
     background: url(/@/assets/images/website/daohang_2.png) no-repeat left top;
@@ -149,7 +187,6 @@ const toggleLocale = async str => {
     justify-content: space-between;
     align-items: center;
     padding: 0 100px;
-
   }
 }
 

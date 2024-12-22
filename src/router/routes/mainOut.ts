@@ -21,15 +21,24 @@ export const mainOutRoutes: AppRouteModule[] = [
     path: '/website',
     name: 'Website',
     component: () => import('/@/views/website/index.vue'),
-    redirect: '/website/about',
+    redirect: '/website/home',
     meta: {
       title: 'Website',
       ignoreAuth: true,
     },
     children: [
       {
+        path: '/website/home',
+        name: 'home',
+        component: () => import('/@/views/website/home.vue'),
+        meta: {
+          title: 'Website',
+          ignoreAuth: true,
+        },
+      },
+      {
         path: '/website/about',
-        name: 'About',
+        name: 'about',
         component: () => import('/@/views/website/about.vue'),
         meta: {
           title: 'Website',
