@@ -36,7 +36,7 @@ import img1 from '/@/assets/images/website/baoxian_3.png';
 <style lang="less" scoped>
 .business {
   .business__top {
-    background: url(/@/assets/images/website/banner_8.png) no-repeat center center;
+    background-image: url(/@/assets/images/website/banner_8.png);
   }
   .banner1 {
     background: url(/@/assets/images/website/baoxian.png) no-repeat center center;

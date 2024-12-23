@@ -39,7 +39,7 @@
 <style lang="less" scoped>
 .connect {
   .connect__header {
-    background: url(/@/assets/images/website/banner_6.png) no-repeat center center;
+    background-image: url(/@/assets/images/website/banner_6.png);
   }
   .connect__content {
     background: url(/@/assets/images/website/banner_9.png) no-repeat center center;
