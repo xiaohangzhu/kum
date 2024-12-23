@@ -26,7 +26,7 @@
     min-height: 100vh;
     background: #fff;
     .team__header {
-      background: url(/@/assets/images/website/banner_7.png) no-repeat center center;
+      background-image: url(/@/assets/images/website/banner_7.png);
     }
     .team__content {
       width: 1000px;
