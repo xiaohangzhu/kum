@@ -1,7 +1,7 @@
 <template>
   <div class="website">
     <!-- web {{ t('okText') }} -->
-    <header class="website__header">
+    <header class="website__header" ref="stickyElement">
       <img :src="logo" alt="logo" class="logo" @click="goHome" />
 
       <div class="header_right">
@@ -19,6 +19,7 @@
         </div>
       </div>
     </header>
+
     <RouterView />
     <footer class="website__footer">
       <img :src="logo" alt="logo" />
@@ -34,10 +35,53 @@
   import { useRoute } from 'vue-router';
 
 
+
+
+
   const { changeLocale, getLocale } = useLocale();
 
   import logo from '/@/assets/images/website/logo.png';
-  import { ref, unref, watchEffect, watch } from 'vue';
+  import { ref, unref, watchEffect, watch, onMounted, onUnmounted } from 'vue';
+
+
+  const stickyElement = ref(null);
+
+  const handleScroll = () => {
+    console.log('scroll')
+      const element = stickyElement.value;
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        console.log(rect.top, 'rect')
+        if (rect.top <= 0) {
+          element.style.position = 'fixed';
+          element.style.top = '0';
+          element.style.width = '100%'; // 确保宽度与容器一致
+        } else {
+          element.style.position = 'relative';
+          element.style.top = 'initial';
+          element.style.width = 'initial';
+        }
+      }
+    };
+
+    onMounted(() => {
+      const container = stickyElement.value?.parentElement;
+      console.log(container, stickyElement.value, 'stickyElement')
+      window.addEventListener('scroll', handleScroll);
+      
+    });
+ 
+    onUnmounted(() => {
+      const container = stickyElement.value?.parentElement;
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    });
+
+
+
+
+
 
   const currentMenu = ref('home');
   const currentLocale = ref('');
