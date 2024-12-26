@@ -16,6 +16,8 @@
           <span :class="['locale__item', currentLocale === 'en' && 'active']" @click="toggleLocale('en')">En</span>
           <span class="locale__item">/</span>
           <span :class="['locale__item', currentLocale === 'zh_CN' && 'active']" @click="toggleLocale('zh_CN')">简</span>
+          <span class="locale__item">/</span>
+          <span :class="['locale__item', currentLocale === 'zh_TC' && 'active']" @click="toggleLocale('zh_TC')">繁</span>
         </div>
       </div>
     </header>
@@ -59,7 +61,6 @@ const handleScroll = (e) => {
 
 onMounted(() => {
   const pEle = stickyElement.value?.parentElement;
-  console.dir(pEle);
   pEle?.addEventListener('scroll', handleScroll);
 });
 
@@ -142,6 +143,7 @@ const goHome = () => {
 @media (max-width: @screen-md) {
   .website {
     background: #ccc;
+    overflow-x: hidden;
     .menu {
       display: none !important;
     }
@@ -149,6 +151,10 @@ const goHome = () => {
 }
 </style>
 <style lang="less" scoped>
+
+// @import url(./index.less);
+
+
 .website {
   width: 100%;
   height: 100%;
@@ -160,10 +166,11 @@ const goHome = () => {
     background: url(/@/assets/images/website/daohang_1.png) no-repeat left top;
     background-size: 100% 100%;
     height: 89px;
+    // .px-rem(height, 89);
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

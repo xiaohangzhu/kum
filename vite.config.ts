@@ -9,6 +9,8 @@ import { wrapperEnv } from './build/utils';
 import { createVitePlugins } from './build/vite/plugin';
 import { OUTPUT_DIR } from './build/constant';
 
+import pxtorem from 'postcss-pxtorem'
+
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
@@ -44,6 +46,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
   return {
     base: isQiankunMicro ? VITE_GLOB_QIANKUN_MICRO_APP_ENTRY : VITE_PUBLIC_PATH,
+
     root,
     resolve: {
       alias: [
@@ -83,6 +86,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // 合并 server 配置
       ...serverOptions,
     },
+    
     build: {
       minify: 'esbuild',
       target: 'es2015',
@@ -126,6 +130,18 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           modifyVars: generateModifyVars(),
           javascriptEnabled: true,
         },
+      },
+      postcss: {
+        plugins: [
+          pxtorem({
+            rootValue: 192,
+            propList: ['*', '!border'],
+            selectorBlackList: ['html'],
+            replace: true,
+            mediaQuery: false,
+            minPixelValue: 2,
+          })
+        ]
       },
     },
 
