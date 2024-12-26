@@ -20,6 +20,21 @@
           <span :class="['locale__item', currentLocale === 'zh_TC' && 'active']" @click="toggleLocale('zh_TC')">繁</span>
         </div>
       </div>
+      <img src="/@/assets/images/website/daohang.png" class="daohang" @click="changeMenu" alt="">
+      <Transition name="collapse">
+        <ul class="menu-phone" v-if="menuPhone">
+          <!-- <li class="menu__item" 
+          :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" 
+          v-html="t('website.pmenu1')"></li>
+          <li class="menu__item" 
+          :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')">
+          我們的業務</li>
+          <li class="menu__item" :class="currentMenu === 'team' && 'active'" 
+          @click="toggleMenu('team')">我們的團隊</li>
+          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" 
+          @click="toggleMenu('connect')">聯絡我們</li> -->
+        </ul>
+      </Transition>
     </header>
 
     <RouterView />
@@ -43,6 +58,12 @@ import { ref, unref, watchEffect, watch, onMounted, onUnmounted } from 'vue';
 
 const currentMenu = ref('home');
 const currentLocale = ref('');
+const menuPhone = ref(false);
+
+const changeMenu = () => {
+  menuPhone.value = !menuPhone.value;
+};
+
 const { t } = useI18n();
 
 const route = useRoute();
@@ -86,6 +107,9 @@ watchEffect(() => {
 
 const toggleMenu = (str) => {
   currentMenu.value = str;
+  setTimeout(() => {
+    changeMenu()
+  }, 300);
   router.push({
     name: str,
   });
@@ -106,8 +130,39 @@ const goHome = () => {
 };
 </script>
 <style lang="less">
+@import url('./index.less');
+.collapse-enter-active, .collapse-leave-active {
+  transition: all .3s ease;
+  // overflow: hidden;
+}
+.collapse-enter-from, .collapse-leave-to {
+  height: 0;
+  background: red;
+}
+
+
 .website {
   background: #f2f2f2;
+}
+.daohang {
+  display: none;
+}
+.menu-phone {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: rgba(13, 13, 13, .8);
+  color: #ffffff;
+  height: 100px;
+  .menu__item {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0;
+    &:hover {
+      background: #711711;
+    }
+  }
+  
 }
 .website__banner {
   width: 100%;
@@ -137,15 +192,6 @@ const goHome = () => {
       font-weight: bold;
       font-size: 24px;
       color: @color;
-    }
-  }
-}
-@media (max-width: @screen-md) {
-  .website {
-    background: #ccc;
-    overflow-x: hidden;
-    .menu {
-      display: none !important;
     }
   }
 }

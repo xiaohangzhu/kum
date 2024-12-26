@@ -3,3 +3,35 @@
 .px-rem(@property, @px) {
   @{property}: unit((@px / @base-font-size), rem);
 }
+
+
+@media (max-width: @screen-md) {
+  .website {
+    background: #ccc;
+    overflow-x: hidden;
+    .website__header {
+      height: 100px !important;
+    }
+    // .menu {
+    //   display: none !important;
+    // }
+    // .locale__title {
+    //   display: none;
+    // }
+    .header_right {
+      display: none !important;
+    }
+    .daohang {
+      display: inline-block;
+    }
+    .website__header {
+      padding: 0 10% !important;
+    }
+    .logo {
+      height: 50%;
+    }
+    .menu-phone {
+      top: 100px;
+    }
+  }
+}
