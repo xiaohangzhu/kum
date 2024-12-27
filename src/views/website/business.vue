@@ -48,7 +48,6 @@ import img1 from '/@/assets/images/website/baoxian_3.png';
   .banner1 {
     background: url(/@/assets/images/website/baoxian.png) no-repeat center center;
     background-size: cover;
-    // width: 1123px;
     width: 100%;
     height: 435px;
     margin: 90px auto;

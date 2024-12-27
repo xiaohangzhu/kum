@@ -10,6 +10,7 @@
 </script>
 
 <style lang="less" scoped>
+@import url(./index.less);
 .about {
   height: calc(100vh - 173px);
   display: flex;

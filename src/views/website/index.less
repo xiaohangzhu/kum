@@ -4,7 +4,6 @@
   @{property}: unit((@px / @base-font-size), rem);
 }
 
-
 @media (max-width: @screen-md) {
   .website {
     background: #ccc;
@@ -32,6 +31,88 @@
     }
     .menu-phone {
       top: 100px;
+    }
+    .website__footer {
+      height: 100px !important;
+      padding: 0 10% !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center;
+      > img {
+        height: 30%;
+      }
+    }
+    .website__banner {
+      height: 305px !important;
+      .website__banner_main {
+        top: 140px;
+        width: 70%;
+        line-height: 1;
+        > h3 {
+          font-size: 20px;
+          margin-bottom: 2px;
+          padding-bottom: 12px;
+        }
+        > span {
+          font-size: 14px;
+        }
+      }
+    }
+    .about {
+      height: calc(100vh - 100px);
+      > img {
+        width: 90%;
+      }
+    }
+
+    .business {
+      .flow {
+        height: 240px;
+        // object-fit:scale-down;
+      }
+      .title {
+        font-size: 32px;
+      }
+      .business__area {
+        width: 100% !important;
+        .banner1 {
+          padding: 20px 40px;
+          margin: 30px auto;
+          background-position: right top;
+          .long_business {
+            width: 100%;
+            padding: 0;
+          }
+
+        }
+        .banner2 {
+          margin: 0 auto 30px;
+
+          background-position: left top;
+          .right {
+            margin-left: 0;
+            padding: 50px 0 0 40px;
+          }
+        }
+        .baoxian {
+          margin-left: 40px;
+        
+        }
+      
+
+      }
+    }
+
+    .team {
+      .team__content {
+        width: 100% !important;
+      }
+      .team__content_user {
+        display: flex;
+        flex-flow: column nowrap !important;
+        align-items: center;
+      }
     }
   }
 }

@@ -23,7 +23,7 @@
       <img src="/@/assets/images/website/daohang.png" class="daohang" @click="changeMenu" alt="">
       <Transition name="collapse">
         <ul class="menu-phone" v-if="menuPhone">
-          <!-- <li class="menu__item" 
+          <li class="menu__item" 
           :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" 
           v-html="t('website.pmenu1')"></li>
           <li class="menu__item" 
@@ -32,7 +32,14 @@
           <li class="menu__item" :class="currentMenu === 'team' && 'active'" 
           @click="toggleMenu('team')">我們的團隊</li>
           <li class="menu__item" :class="currentMenu === 'connect' && 'active'" 
-          @click="toggleMenu('connect')">聯絡我們</li> -->
+          @click="toggleMenu('connect')">聯絡我們</li>
+          <!-- <li class="menu__item">VIP 客户管理系统</li> -->
+          <li class="menu__item"
+          @click="toggleLocale('en')">En</li>
+          <li class="menu__item"
+          @click="toggleLocale('zh_CN')">简</li>
+          <li class="menu__item"
+          @click="toggleLocale('zh_TC')">繁</li>
         </ul>
       </Transition>
     </header>
@@ -131,16 +138,6 @@ const goHome = () => {
 </script>
 <style lang="less">
 @import url('./index.less');
-.collapse-enter-active, .collapse-leave-active {
-  transition: all .3s ease;
-  // overflow: hidden;
-}
-.collapse-enter-from, .collapse-leave-to {
-  height: 0;
-  background: red;
-}
-
-
 .website {
   background: #f2f2f2;
 }
@@ -153,7 +150,8 @@ const goHome = () => {
   width: 100%;
   background: rgba(13, 13, 13, .8);
   color: #ffffff;
-  height: 100px;
+  max-height: 400px;
+  overflow: hidden;
   .menu__item {
     text-align: center;
     font-size: 20px;
@@ -199,6 +197,16 @@ const goHome = () => {
 <style lang="less" scoped>
 
 // @import url(./index.less);
+
+.collapse-enter-active, .collapse-leave-active {
+  transition: all .3s ease;
+  overflow: hidden;
+}
+.collapse-enter-from, .collapse-leave-to {
+  max-height: 0;
+}
+
+
 
 
 .website {
@@ -282,9 +290,6 @@ const goHome = () => {
   }
 
   .website__footer {
-    // position: absolute;
-    // left: 0;
-    // bottom: 0;
     width: 100%;
     height: 173px;
     background: url(/@/assets/images/website/daohang_2.png) no-repeat left top;
