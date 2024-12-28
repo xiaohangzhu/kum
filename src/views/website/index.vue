@@ -70,7 +70,6 @@ const stickyElement: any = ref(null);
 
 const toOut = () => {
   window.open('https://ansump0a.cbit.zhibaocloud.com', "_blank");
-  changeMenu()
 }
 
 const toOut2 = () => {
