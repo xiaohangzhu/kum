@@ -224,7 +224,6 @@ const goHome = () => {
     background: url(/@/assets/images/website/daohang_1.png) no-repeat left top;
     background-size: 100% 100%;
     height: 89px;
-    // .px-rem(height, 89);
     position: absolute;
     left: 0;
     top: 0;
@@ -233,7 +232,7 @@ const goHome = () => {
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0 100px;
+    padding: 0 10%;
     z-index: 11;
     &.sticky {
       // position: sticky;
@@ -244,12 +243,14 @@ const goHome = () => {
     }
 
     .header_right {
+      flex: 1;
       line-height: 1;
       font-size: 18px;
       color: #ffffff;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
+      justify-content: flex-end;
       height: 100%;
       .menu {
         display: flex;
@@ -270,7 +271,9 @@ const goHome = () => {
         }
       }
       .locale {
-        padding-left: 72px;
+        padding-left: 0;
+        margin-left: 6%;
+        white-space: nowrap;
         .locale__title {
           color: #95352f;
           border-right: 1px solid #95352f;
@@ -306,7 +309,7 @@ const goHome = () => {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0 100px;
+    padding: 0 10%;
   }
 }
 </style>
