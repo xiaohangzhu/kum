@@ -8,5 +8,10 @@ export default {
     tab2: 'Development history',
     tab3: 'Business philosophy',
     about1Title: '<span>Founding </span>origin',
+    about2Title: 'KUM EstablishmentTime',
+    about2Title2: 'Deeply cultivate the insurance brokerage industry',
+    about2Title3: 'Iia licence number',
+
+
     
 }

@@ -8,5 +8,9 @@ export default {
     tab2: '发展历史',
     tab3: '经营理念',
     about1Title: '<span>创始</span>由来',
+    about2Title: 'KUM成立时间',
+    about2Title2: '深耕保险经纪行业',
+    about2Title3: '保监局牌照编号',
+
 
 }

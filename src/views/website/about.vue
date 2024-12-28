@@ -43,11 +43,11 @@
         <div class="lishi__time">
           <ul class="lishi__time_progress">
             <li>1995</li>
-            <li>KUM成立時間</li>
+            <li>{{ t('website.about2Title') }}</li>
             <li>29余年</li>
-            <li>深耕保險經紀行業</li>
+            <li>{{ t('website.about2Title2') }}</li>
             <li>FB1380</li>
-            <li>保監局牌照編號</li>
+            <li>{{ t('website.about2Title3') }}</li>
           </ul>
 
           <img src="/@/assets/images/website/lishi_tupian.png" alt="" />
@@ -230,6 +230,10 @@ const change = (num) => {
         margin-right: 40px;
         text-align: center;
         > li {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+          align-items: center;
           &:nth-of-type(2n-1) {
             font-weight: bold;
             font-size: 55px;
@@ -239,9 +243,9 @@ const change = (num) => {
             font-weight: 500;
             font-size: 20px;
             color: #ffffff;
-            height: 40px;
-            line-height: 40px;
-            padding: 0 20px;
+            min-height: 40px;
+            // line-height: 40px;
+            padding: 0 10px;
             background: #000000;
           }
         }
