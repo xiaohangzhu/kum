@@ -148,7 +148,8 @@ const change = (num) => {
       color: #711711;
       font-size: 20px;
       width: 192px;
-      height: 92px;
+      // height: 92px;
+      padding: 20px 0px;
       background: #ffffff;
       box-shadow: 0px 1px 13px 0px rgba(102, 14, 33, 0.31);
       .img {

@@ -156,6 +156,7 @@ export function createPermissionGuard(router: Router) {
       console.log(redirectData, 'redirectData')
       if (redirectData.path === '/login') {
         redirectData.path = '/website'
+        delete redirectData.query;
       }
       next(redirectData);
       return;
