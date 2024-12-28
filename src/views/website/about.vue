@@ -54,12 +54,11 @@
         </div>
 
         <ol class="lishi__desc">
-          <li>香港老牌保險經紀行，合法許可銷售保險類金融產品的持牌法團。</li>
+          <li>{{ t('website.about2desc1') }}</li>
           <li>
-            本港同業少數滿足中央政府與香港特區政府簽署的《內地與香港關於建立更緊密經貿關係的安排》 (CEPA, Closer EconomicPartnership
-            Agreement)框架協議要求的優良信用經紀公司。
+            {{ t('website.about2desc2') }}
           </li>
-          <li>超29年保險服務經營，穩健經營一般保險、長期保險、及政府強積金保險業務。</li>
+          <li>{{ t('website.about2desc3') }}</li>
         </ol>
       </div>
 
@@ -69,29 +68,29 @@
     <div v-if="current === 3" class="about_main3">
       <ul class="idea">
         <li class="idea__item">
-          <h4 class="idea__item_title"><span>诚信</span>服務</h4>
+          <h4 class="idea__item_title" v-html="t('website.about3tab1')"></h4>
           <div class="idea__item_desc">
-            <div> <span>赢得</span><em>客户信任和企業長足發展之</em><span>基石</span> </div>
+            <div v-html="t('website.about3desc1')">  </div>
           </div>
         </li>
         <li class="idea__item">
-          <h4 class="idea__item_title"><span>風險</span>保障</h4>
+          <h4 class="idea__item_title" v-html="t('website.about3tab2')"></h4>
           <div class="idea__item_desc idea__item_desc2">
-            <div> <span>為客戶提供</span><em>人生健康與經濟風險保障</em><span>的本質保障。 </span> </div>
+            <div v-html="t('website.about3desc2')"> </div>
           </div>
         </li>
         <li class="idea__item">
-          <h4 class="idea__item_title"><span>資產</span>管理</h4>
+          <h4 class="idea__item_title" v-html="t('website.about3tab3')"></h4>
           <div class="idea__item_desc idea__item_desc3">
-            <div> <span>助力</span><em>高淨值人群財富穩健增值</em><span>和發揮多元功能作用。</span> </div>
+            <div v-html="t('website.about3desc3')">  </div>
           </div>
         </li>
         <li class="idea__item">
-          <h4 class="idea__item_title"><span>財富</span>传承</h4>
+          <h4 class="idea__item_title" v-html="t('website.about3tab4')"></h4>
           <div class="idea__item_desc idea__item_desc4">
-            <div>
-              <span>未雨綢繆的</span><em>稅務</em><span>及合理分配 安排以實現家族的</span><em>財富传承</em>
-              <span> ， 萬物循環缺一切如常泰然處之。 </span></div
+            <div v-html="t('website.about3desc4')">
+              
+              </div
             >
           </div>
         </li>
@@ -320,19 +319,17 @@ const change = (num) => {
           background-size: 100% 100%;
           width: 410px;
           height: 117px;
-          padding: 0 120px 0 46px;
+          padding: 0 100px 0 30px;
           box-sizing: border-box;
-          font-size: 18px;
-          color: #7a0808;
+          font-size: 17px;
+         color: #000;
           display: flex;
           flex-flow: row nowrap;
           align-items: center;
           transform: translateX(-20px);
-          span {
-            color: #000000;
-          }
-          em {
+          :deep(em) {
             font-style: normal;
+            color: #7a0808;
           }
           &.idea__item_desc2 {
             background: url(/@/assets/images/website/baozhang_bg.png) no-repeat center center;

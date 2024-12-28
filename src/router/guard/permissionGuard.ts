@@ -49,6 +49,7 @@ export function createPermissionGuard(router: Router) {
       userStore.getUserInfo.homePath !== PageEnum.BASE_HOME
     ) {
       homePathJumpCount++;
+      console.log("=====1")
       next(userStore.getUserInfo.homePath);
       return;
     }
@@ -151,6 +152,10 @@ export function createPermissionGuard(router: Router) {
           // update-end-author:sunjianlei date:20230306 for: 修复登录成功后，没有正确重定向的问题
 
         };
+      }
+      console.log(redirectData, 'redirectData')
+      if (redirectData.path === '/login') {
+        redirectData.path = '/website'
       }
       next(redirectData);
       return;

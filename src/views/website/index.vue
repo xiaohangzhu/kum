@@ -8,7 +8,7 @@
         <ul class="menu">
           <li class="menu__item" :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1')"></li>
           <li class="menu__item" :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')" v-html="t('website.menu2')"></li>
-          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')" v-html="t('website.menu3')"></li>
+          <!-- <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')" v-html="t('website.menu3')"></li> -->
           <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')" v-html="t('website.menu4')"></li>
         </ul>
         <div class="locale">
@@ -25,7 +25,7 @@
         <ul class="menu-phone" v-if="menuPhone">
           <li class="menu__item" :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1').replace('<br>', '')"></li>
           <li class="menu__item" :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')" v-html="t('website.menu2').replace('<br>', '')"></li>
-          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')" v-html="t('website.menu3').replace('<br>', '')"></li>
+          <!-- <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')" v-html="t('website.menu3').replace('<br>', '')"></li> -->
           <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')" v-html="t('website.menu4').replace('<br>', '')"></li>
           <li class="menu__item" @click="toOut2">VIP {{ t('website.out') }}</li>
           <li class="menu__item" @click="toggleLocale('en')">En</li>

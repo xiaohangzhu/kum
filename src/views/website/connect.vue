@@ -6,30 +6,30 @@
     <div class="connect__content">
       <div class="cate">
         <dl class="cate_col">
-          <dt class="name">香港辦事處</dt>
-          <dd class="label">地址</dd>
-          <dd class="value">香港中環皇后大道中1號17樓</dd>
-          <dd class="label">電話</dd>
+          <dt class="name">{{ t('website.address1') }}</dt>
+          <dd class="label">{{ t('website.addrname1') }}</dd>
+          <dd class="value">{{ t('website.addressdesc1') }}</dd>
+          <dd class="label">{{ t('website.addrname2') }}</dd>
           <dd class="value">+123 4567 0000</dd>
-          <dd class="label">電郵</dd>
+          <dd class="label">{{ t('website.addrname3') }}</dd>
           <dd class="value">info@kum.com</dd>
         </dl>
         <dl class="cate_col">
-          <dt class="name">新加坡辦事處</dt>
-          <dd class="label">地址</dd>
-          <dd class="value">新加坡獅城大道123號</dd>
-          <dd class="label">電話</dd>
+          <dt class="name">{{ t('website.address2') }}</dt>
+          <dd class="label">{{ t('website.addrname1') }}</dd>
+          <dd class="value">{{ t('website.addressdesc2') }}</dd>
+          <dd class="label">{{ t('website.addrname2') }}</dd>
           <dd class="value">+123 4567 0000</dd>
-          <dd class="label">電郵</dd>
+          <dd class="label">{{ t('website.addrname3') }}</dd>
           <dd class="value">info@kum.com</dd>
         </dl>
         <dl class="cate_col">
-          <dt class="name">北京辦事處</dt>
-          <dd class="label">地址</dd>
-          <dd class="value">北京市鼓樓大街13號</dd>
-          <dd class="label">電話</dd>
+          <dt class="name">{{ t('website.address3') }}</dt>
+          <dd class="label">{{ t('website.addrname1') }}</dd>
+          <dd class="value">{{ t('website.addressdesc3') }}</dd>
+          <dd class="label">{{ t('website.addrname2') }}</dd>
           <dd class="value">+123 4567 0000</dd>
-          <dd class="label">電郵</dd>
+          <dd class="label">{{ t('website.addrname3') }}</dd>
           <dd class="value">info@kum.com</dd>
         </dl>
       </div>

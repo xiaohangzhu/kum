@@ -23,7 +23,7 @@ export const mainOutRoutes: AppRouteModule[] = [
     component: () => import('/@/views/website/index.vue'),
     redirect: '/website/home',
     meta: {
-      title: 'Website',
+      title: '网站',
       ignoreAuth: true,
     },
     children: [
@@ -32,7 +32,7 @@ export const mainOutRoutes: AppRouteModule[] = [
         name: 'home',
         component: () => import('/@/views/website/home.vue'),
         meta: {
-          title: 'Website',
+          title: '网站',
           ignoreAuth: true,
         },
       },
@@ -41,7 +41,7 @@ export const mainOutRoutes: AppRouteModule[] = [
         name: 'about',
         component: () => import('/@/views/website/about.vue'),
         meta: {
-          title: 'Website',
+          title: '网站',
           ignoreAuth: true,
         },
       },
@@ -50,7 +50,7 @@ export const mainOutRoutes: AppRouteModule[] = [
         name: 'business',
         component: () => import('/@/views/website/business.vue'),
         meta: {
-          title: 'Website',
+          title: '网站',
           ignoreAuth: true,
         },
       },
@@ -59,7 +59,7 @@ export const mainOutRoutes: AppRouteModule[] = [
         name: 'team',
         component: () => import('/@/views/website/team.vue'),
         meta: {
-          title: 'Website',
+          title: '网站',
           ignoreAuth: true,
         },
       },
@@ -68,7 +68,7 @@ export const mainOutRoutes: AppRouteModule[] = [
         name: 'connect',
         component: () => import('/@/views/website/connect.vue'),
         meta: {
-          title: 'Website',
+          title: '网站',
           ignoreAuth: true,
         },
       },

@@ -6,29 +6,29 @@
     <div class="business__area">
       
       <div class="banner1">
-        <h3 class="title"><span>长期</span>保险</h3>
+        <h3 class="title" v-html="t('website.bt1')"></h3>
 
         <ul class="long_business">
-          <li class="long_business_item">融資保單</li>
-          <li class="long_business_item">分紅儲蓄</li>
-          <li class="long_business_item">短期儲蓄</li>
-          <li class="long_business_item">萬用壽險</li>
-          <li class="long_business_item">高端醫療</li>
-          <li class="long_business_item">重大疾病</li>
+          <li class="long_business_item">{{ t('website.bdesc1') }}</li>
+          <li class="long_business_item">{{ t('website.bdesc2') }}</li>
+          <li class="long_business_item">{{ t('website.bdesc3') }}</li>
+          <li class="long_business_item">{{ t('website.bdesc4') }}</li>
+          <li class="long_business_item">{{ t('website.bdesc5') }}</li>
+          <li class="long_business_item">{{ t('website.bdesc6') }}</li>
         </ul>
       </div>
       <div class="banner2">
         <div class="right">
-          <h3 class="title"><span>一般保險、</span>強積金及其他</h3>
+          <h3 class="title" v-html="t('website.bt2')"></h3>
 
           <ul class="long_business">
-            <li class="long_business_item">責任、風險保障險種 </li>
-            <li class="long_business_item">企業團險</li>
-            <li class="long_business_item">強積金</li>
+            <li class="long_business_item">{{ t('website.bdesc7') }} </li>
+            <li class="long_business_item">{{ t('website.bdesc8') }}</li>
+            <li class="long_business_item">{{ t('website.bdesc9') }}</li>
           </ul>
         </div>
       </div>
-      <h3 class="title baoxian"><span>保险</span>信托</h3>
+      <h3 class="title baoxian" v-html="t('website.bt3')"></h3>
     </div>
     <img :src="img1" alt="" class="flow" />
   </div>
@@ -49,9 +49,9 @@ const { t } = useI18n();
   }
   .banner1 {
     background: url(/@/assets/images/website/baoxian.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% auto;
     width: 100%;
-    height: 435px;
+    min-height: 435px;
     margin: 90px auto;
     padding: 50px 0 0 88px;
   }
@@ -76,10 +76,10 @@ const { t } = useI18n();
   }
   .banner2 {
     background: url(/@/assets/images/website/baoxian_2.png) no-repeat center center;
-    background-size: cover;
+    background-size: 100% auto;
     // width: 1062px;
     width: 100%;
-    height: 435px;
+    min-height: 435px;
     margin: 0 auto 63px;
     .right {
       margin-left: 50%;
@@ -105,7 +105,7 @@ const { t } = useI18n();
   }
   .title {
     padding-left: 28px;
-    height: 45px;
+    // height: 45px;
     line-height: 45px;
     font-size: 36px;
     color: #000000;
