@@ -1,5 +1,5 @@
 <template>
-  <div class="website">
+  <div class="website" :class="currentMenu === 'home' && 'website-home'">
     <!-- web {{ t('okText') }} -->
     <header class="website__header" ref="stickyElement">
       <img :src="logo" alt="logo" class="logo" @click="goHome" />
@@ -7,12 +7,12 @@
       <div class="header_right">
         <ul class="menu">
           <li class="menu__item" :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1')"></li>
-          <li class="menu__item" :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')">我們的<br />業務</li>
-          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')">我們的<br />團隊</li>
-          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')">聯絡<br />我們</li>
+          <li class="menu__item" :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')" v-html="t('website.menu2')"></li>
+          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')" v-html="t('website.menu3')"></li>
+          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')" v-html="t('website.menu4')"></li>
         </ul>
         <div class="locale">
-          <span class="locale__title">VIP 客户管理系统</span>
+          <span class="locale__title" @click="toOut">VIP {{ t('website.out') }}</span>
           <span :class="['locale__item', currentLocale === 'en' && 'active']" @click="toggleLocale('en')">En</span>
           <span class="locale__item">/</span>
           <span :class="['locale__item', currentLocale === 'zh_CN' && 'active']" @click="toggleLocale('zh_CN')">简</span>
@@ -20,26 +20,17 @@
           <span :class="['locale__item', currentLocale === 'zh_TC' && 'active']" @click="toggleLocale('zh_TC')">繁</span>
         </div>
       </div>
-      <img src="/@/assets/images/website/daohang.png" class="daohang" @click="changeMenu" alt="">
+      <img src="/@/assets/images/website/daohang.png" class="daohang" @click="changeMenu" alt="" />
       <Transition name="collapse">
         <ul class="menu-phone" v-if="menuPhone">
-          <li class="menu__item" 
-          :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" 
-          v-html="t('website.pmenu1')"></li>
-          <li class="menu__item" 
-          :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')">
-          我們的業務</li>
-          <li class="menu__item" :class="currentMenu === 'team' && 'active'" 
-          @click="toggleMenu('team')">我們的團隊</li>
-          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" 
-          @click="toggleMenu('connect')">聯絡我們</li>
-          <!-- <li class="menu__item">VIP 客户管理系统</li> -->
-          <li class="menu__item"
-          @click="toggleLocale('en')">En</li>
-          <li class="menu__item"
-          @click="toggleLocale('zh_CN')">简</li>
-          <li class="menu__item"
-          @click="toggleLocale('zh_TC')">繁</li>
+          <li class="menu__item" :class="currentMenu === 'about' && 'active'" @click="toggleMenu('about')" v-html="t('website.menu1').replace('<br>', '')"></li>
+          <li class="menu__item" :class="currentMenu === 'business' && 'active'" @click="toggleMenu('business')" v-html="t('website.menu2').replace('<br>', '')"></li>
+          <li class="menu__item" :class="currentMenu === 'team' && 'active'" @click="toggleMenu('team')" v-html="t('website.menu3').replace('<br>', '')"></li>
+          <li class="menu__item" :class="currentMenu === 'connect' && 'active'" @click="toggleMenu('connect')" v-html="t('website.menu4').replace('<br>', '')"></li>
+          <li class="menu__item" @click="toOut2">VIP {{ t('website.out') }}</li>
+          <li class="menu__item" @click="toggleLocale('en')">En</li>
+          <li class="menu__item" @click="toggleLocale('zh_CN')">简</li>
+          <li class="menu__item" @click="toggleLocale('zh_TC')">繁</li>
         </ul>
       </Transition>
     </header>
@@ -77,9 +68,16 @@ const route = useRoute();
 
 const stickyElement: any = ref(null);
 
+const toOut = () => {
+  window.open('https://ansump0a.cbit.zhibaocloud.com', "_blank");
+}
+
+const toOut2 = () => {
+  window.open('https://ansump0a-jn.cbit.zhibaocloud.com', "_blank");
+}
+
 const handleScroll = (e) => {
   const scrollY = e.target.scrollTop;
-  console.log(scrollY, stickyElement.value.classList);
   if (scrollY > 0) {
     stickyElement.value.classList.add('sticky');
   } else {
@@ -114,9 +112,14 @@ watchEffect(() => {
 
 const toggleMenu = (str) => {
   currentMenu.value = str;
-  setTimeout(() => {
-    changeMenu()
-  }, 300);
+  // if () {}
+  console.log(window.innerWidth);
+  if (window.innerWidth <= 768) {
+    setTimeout(() => {
+      changeMenu();
+    }, 300);
+  }
+
   router.push({
     name: str,
   });
@@ -148,7 +151,7 @@ const goHome = () => {
   position: absolute;
   left: 0;
   width: 100%;
-  background: rgba(13, 13, 13, .8);
+  background: rgba(13, 13, 13, 0.8);
   color: #ffffff;
   max-height: 400px;
   overflow: hidden;
@@ -160,7 +163,6 @@ const goHome = () => {
       background: #711711;
     }
   }
-  
 }
 .website__banner {
   width: 100%;
@@ -195,26 +197,27 @@ const goHome = () => {
 }
 </style>
 <style lang="less" scoped>
-
 // @import url(./index.less);
 
-.collapse-enter-active, .collapse-leave-active {
-  transition: all .3s ease;
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 0.3s ease;
   overflow: hidden;
 }
-.collapse-enter-from, .collapse-leave-to {
+.collapse-enter-from,
+.collapse-leave-to {
   max-height: 0;
 }
-
-
-
 
 .website {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   position: relative;
   box-sizing: border-box;
+  &.website-home {
+    overflow: hidden;
+  }
 
   .website__header {
     background: url(/@/assets/images/website/daohang_1.png) no-repeat left top;
@@ -273,6 +276,7 @@ const goHome = () => {
           padding-right: 15px;
           margin-right: 15px;
           height: 26px;
+          cursor: pointer;
         }
         .locale__item {
           width: 26px;

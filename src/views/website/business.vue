@@ -1,7 +1,7 @@
 <template>
   <div class="business">
     <div class="website__banner business__top">
-        <div class="website__banner_main"><h3>我们的业务</h3> <span>OUR BUSINESS</span></div>
+        <div class="website__banner_main"><h3 v-html="t('website.menu2').replace('<br>', '')"></h3> <span>OUR BUSINESS</span></div>
       </div>
     <div class="business__area">
       
@@ -35,6 +35,8 @@
 </template>
 <script lang="ts" setup>
 import img1 from '/@/assets/images/website/baoxian_3.png';
+import { useI18n } from '/@/hooks/web/useI18n';
+const { t } = useI18n();
 </script>
 <style lang="less" scoped>
 .business {

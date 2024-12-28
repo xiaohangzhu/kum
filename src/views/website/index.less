@@ -59,11 +59,82 @@
         }
       }
     }
-    .about {
+    .home {
       height: calc(100vh - 100px);
       > img {
         width: 90%;
       }
+    }
+    .about {
+
+      .menu {
+        .menu__item {
+          width: (192px / 2) !important;
+          height: (92px / 2) !important;
+          margin-left: (66px / 2) !important;
+          font-size: 12px !important;
+          .img {
+            width:( 44px / 2) !important;
+          }
+        }
+      }
+      .about_main1 {
+
+        .qy_name {
+          height: 275px !important;
+          > img {
+            width: 30%;
+            margin-left: 10px !important;
+          }
+        }
+
+        .qy_map {
+          height: 200px !important;
+          > img {
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+      }
+
+      .about_main2 {
+
+        .about_main2_content {
+          width: 100% !important;
+        }
+        .lishi__time {
+          display: flex;
+          flex-flow: column nowrap !important;
+          align-items: center !important;
+          .lishi__time_progress {
+            margin-right: 0 !important;
+          }
+        }
+
+        .lishi__desc {
+          padding: 0 20px;
+        }
+
+      }
+
+      .about_main3 {
+        .idea {
+          width: 100%!important;
+          flex-direction: column !important;
+          .idea__item {
+            &:nth-of-type(n) {
+              margin-bottom: 20px !important;
+            }
+          }
+          .idea__item_desc {
+            width: (410px / 1) !important;
+            height: (117px / 1) !important;
+            padding: 0 60px 0 20px;
+          }
+        }
+      }
+
     }
 
     .business {
@@ -111,8 +182,34 @@
       .team__content_user {
         display: flex;
         flex-flow: column nowrap !important;
-        align-items: center;
+        align-items: center !important;
+        .user__img {
+          margin-right: 0;
+        }
+        .user__info {
+          padding: 0 20px;
+          .user__info_title {
+            flex-flow: column nowrap!important;
+            margin-bottom: 20px;
+            &::before {
+              display: none;
+            }
+          }
+        }
       }
+    }
+
+    .connect {
+
+      .connect__content {
+        background-size: 100% !important;
+        background: #ddd !important;
+        .cate {
+          flex-direction: column!important;
+          width: 100%!important;
+        }
+      }
+
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="home">
     <img :src="logo" alt="">
   </div>
 </template>
@@ -11,7 +11,7 @@
 
 <style lang="less" scoped>
 @import url(./index.less);
-.about {
+.home {
   height: calc(100vh - 173px);
   display: flex;
   flex-flow: row nowrap;
