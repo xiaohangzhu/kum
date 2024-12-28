@@ -163,6 +163,9 @@ const goHome = () => {
     &:hover {
       background: #711711;
     }
+    &.active {
+            background: #711711;
+          }
   }
 }
 .website__banner {
